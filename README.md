@@ -1,2 +1,2 @@
 # i3config
-no more time to config :) 
+my i3 windows manager config file. Enjoy !
