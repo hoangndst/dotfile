@@ -29,7 +29,12 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pa-applet
+exec --no-startup-id optimus-manager-qt
+#exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -RTMIN+1 i3blocks
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -47,8 +52,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec rofi -show run -config ~/.config/rofi/config
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'JosefinSans-13' -nb '#073642'
+#bindsym $mod+d exec rofi -show run -config ~/.config/rofi/config
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -107,16 +112,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:     Terminal"
-set $ws2 "2:     Browser"
-set $ws3 "  "
-set $ws4 "4"
+set $ws1 "1   Terminal"
+set $ws2 "2  Browser"
+set $ws3 "3  Apps"
+set $ws4 "4  Dev"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10:     Music"
+#set $ws9 "9"
+set $ws9 "9  Music"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -128,7 +133,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+#bindsym $mod+0 workspace $ws10
 
 
 
@@ -147,7 +152,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # assign progras
 for_window [class="Terminator"] move to workspace $ws1
 for_window [class="Google-chrome"] move to workspace $ws2
-for_window [class="Spotify"] move to workspace $ws10
+for_window [class="Spotify"] move to workspace $ws9
 for_window [class="Ibus-setup"] move to workspace $ws3
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -260,7 +265,10 @@ client.background       $bgcolor
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks -c ~/.config/i3/i3blocks/i3blocks.conf
+        
+
+	status_command i3status -c ~/.config/i3/i3status/i3status.conf
+	#status_command i3blocks -c ~/.config/i3/i3blocks/i3blocks.conf
     colors {
         background $ibgcolor
         statusline $textcolor
@@ -273,7 +281,7 @@ bar {
     }
 }
 
-bindsym $mod+shift+x exec ~/.config/i3/i3lock/i3lock
+bindsym $mod+x exec ~/.config/i3/i3lock/i3lock
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -290,7 +298,69 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # exec_always terminator
-exec_always feh --bg-scale ~/Pictures/Desktop\ Wallpapers/btw.png
-bindsym $mod+n exec --no-startup-id thunar
-exec_always --no-startup-id ~/.config/polybar/scripts/launch.sh
+#exec_always feh --bg-scale ~/Pictures/Desktop\ Wallpapers/btw.png
+bindsym $mod+n exec --no-startup-id nautilus
+
+#exec_always --no-startup-id ~/.config/polybar/scripts/launch.shm
+exec --no-startup-id nitrogen --restore
+
+exec --no-startup-id conky -d -c ~/.config/conky/conky_top_right.conkyrc
+
+exec --no-startup-id conky -d -c ~/.config/conky/conky_bottom_left.conkyrc
+
+exec --no-startup-id blueman-applet
+
+exec --no-startup-id ibus-daemon -drx
+
+exec --no-startup-id picom --config ~/.config/picom.conf
+
+exec --no-startup-id ./AppImage/Google_Assistant-Setup-1.0.0-rc.2-x86_64.AppImage
+
+
+# Set shut down, restart and locking features
+bindsym $mod+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="Xfce4-taskmanager"] floating enable border normal
+for_window [class="Clipgrab"] floating enable
+for_window [title="org.gnome.Nautilus"] floating enable
+for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="GParted"] floating enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Manjaro-hello"] floating enable
+for_window [class="Manjaro Settings Manager"] floating enable border normal
+for_window [title="MuseScore: Play Panel"] floating enable
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Oblogout"] fullscreen enable
+for_window [class="octopi"] floating enable
+for_window [title="About Pale Moon"] floating enable
+for_window [class="Pamac-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="Simple-scan"] floating enable border normal
+for_window [class="(?i)System-config-printer.py"] floating enable border normal
+for_window [class="Skype"] floating enable border normal
+for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="Xfburn"] floating enable
+
+
+
 
