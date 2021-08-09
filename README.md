@@ -1,8 +1,8 @@
-# i3config
-## My i3 windows manager config file. Enjoy !
+### i3config
+#### My i3 windows manager config file. Enjoy !
 
 
-## Usage
+#### Usage
 
 Copy i3 folder to your .config folder.
 
@@ -12,9 +12,9 @@ cp -r i3 ~/.config/
 
 [mod + Shift + r] to refresh i3wm 
 
-## Contributing
+#### Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
+#### License
 [MIT](https://choosealicense.com/licenses/mit/)
 

@@ -1,21 +1,17 @@
-# neovim config file. 
+### neovim config file for windows
 
-version v2.0 for i3wm and solarized dark theme.
+version v3.0 - Gruvbox dark theme.
 
-## Installation
-
-rename this folder from "neovim-conf"" to "nvim"
+#### Installation
 
 Copy or replace this folder to your .config folder.
 
 ```bash
-cp -r nvim ~/.config
+Copy-Item -Path nvim nvim-data -Destination "C:\Users\user_name\AppData\Local"
 ```
 
-## Contributing
+#### Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
