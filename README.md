@@ -28,7 +28,7 @@
 #### Demo
  ![demo](/demo/demo.png)
  ![nvim](demo/nvim.png)
- ![pws](demo/nvim.png)
+ ![pws](demo/pws.png)
 #### License
 [MIT](https://choosealicense.com/licenses/mit/)
 
