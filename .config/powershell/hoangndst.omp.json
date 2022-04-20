@@ -5,20 +5,6 @@
       "alignment": "right",
       "segments": [
         {
-          "background": "#303030",
-          "foreground": "#3C873A",
-          "leading_diamond": " \ue0b6",
-          "properties": {
-            "fetch_package_manager": true,
-            "npm_icon": " <#cc3a3a>\ue5fa</> ",
-            "yarn_icon": " <#348cba>\uf61a</>"
-          },
-          "style": "powerline",
-          "template": "\ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
-          "trailing_diamond": "\ue0b4",
-          "type": "node"
-        },
-        {
           "background": "#0077c2",
           "foreground": "#ffffff",
           "invert_powerline": true,

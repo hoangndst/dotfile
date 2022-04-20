@@ -25,9 +25,10 @@
 
     // [mod + Shift + r] to refresh i3wm 
     ```
-#### Simple demo for fun
+#### Demo
  ![demo](/demo/demo.png)
-
+ ![nvim](demo/nvim.png)
+ ![pws](demo/nvim.png)
 #### License
 [MIT](https://choosealicense.com/licenses/mit/)
 

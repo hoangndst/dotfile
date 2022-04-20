@@ -8,6 +8,13 @@ autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | e
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
+autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
+
+if has('win32')
+  runtime ./windows.vim
+endif
+
+
 set nocompatible
 set runtimepath^=/path/to/coc.nvim
 filetype plugin indent on
@@ -19,11 +26,9 @@ set mouse=a
 
 set encoding=utf8
 
-
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 
 colorscheme gruvbox
 set background=dark
 set termguicolors
-
