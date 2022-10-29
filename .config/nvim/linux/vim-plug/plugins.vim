@@ -1,12 +1,12 @@
 " auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo /home/hoangndst/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   "autocmd VimEnter * PlugInstall
   "autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-call plug#begin('~/.config/nvim/autoload/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
@@ -21,7 +21,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     
     Plug 'vim-airline/vim-airline-themes'
     
-    " Stable version of coc
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " Keeping up to date with master
@@ -32,10 +31,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'ryanoasis/vim-devicons'
    
     Plug 'morhetz/gruvbox'
+    
     Plug 'overcache/NeoSolarized'
 
     Plug 'yuttie/comfortable-motion.vim'
     
     Plug 'preservim/nerdcommenter'
-
+    " For Github Copilot
+    Plug 'github/copilot.vim'
 call plug#end()
